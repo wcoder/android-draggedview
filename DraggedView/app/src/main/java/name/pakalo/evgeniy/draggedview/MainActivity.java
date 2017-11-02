@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     if(isViewInBounds(trashContainer, x, y)) {
                         view.setVisibility(View.GONE);
-                        // remove from layout
+                        // TODO: remove from layout
                     }
                     trashContainer.setVisibility(View.GONE);
                     break;
@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                     RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
                     layoutParams.leftMargin = x - mXDelta;
                     layoutParams.topMargin = y - mYDelta;
+                    layoutParams.rightMargin = -layoutParams.width;
+                    layoutParams.bottomMargin = -layoutParams.height;
                     view.setLayoutParams(layoutParams);
 
                     if(isViewInBounds(trashContainer, x, y)) {
